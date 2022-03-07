@@ -1,22 +1,22 @@
 // //-----------------------Firebase-----------------------//
-// firebase.initializeApp( {
-//     apiKey: "AIzaSyAD1KPUlqKsN3eU_2ikLhU4HUcPsfytkLU",
-//     authDomain: "gogokodo-2590b.firebaseapp.com",
-//     projectId: "gogokodo-2590b",
-//     storageBucket: "gogokodo-2590b.appspot.com",
-//     messagingSenderId: "833185072727",
-//     appId: "1:833185072727:web:03129f4b8d69a734328512"
-//     });
+firebase.initializeApp( {
+    apiKey: "AIzaSyAD1KPUlqKsN3eU_2ikLhU4HUcPsfytkLU",
+    authDomain: "gogokodo-2590b.firebaseapp.com",
+    projectId: "gogokodo-2590b",
+    storageBucket: "gogokodo-2590b.appspot.com",
+    messagingSenderId: "833185072727",
+    appId: "1:833185072727:web:03129f4b8d69a734328512"
+    });
 
-// firebase.auth().onAuthStateChanged((user) => {
-//     if (user) {
-//       // User is signed in, see docs for a list of available properties
-//       // https://firebase.google.com/docs/reference/js/firebase.User
-//       document.querySelector('body').style.display = 'block'         
-//     } else {
-//         document.location.href = "http://127.0.0.1:5500/FrontOffice/loginPage/index.html"
-//     }
-// });
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      document.querySelector('body').style.display = 'block'         
+    } else {
+        document.location.href = "http://127.0.0.1:5500/FrontOffice/loginPage/index.html"
+    }
+});
 
 //-----------------------API-----------------------//
 
@@ -35,14 +35,25 @@ export let cool = ''
 let metaAPI = [];
 let globalState = []
 
+// ------------------ localState Search function -----------------------//
 
-// -------------------  Set Value of local variable -------------
+
+export function localSearch(data) {
+
+}
+
+
+// -------------------  Set Value of local variable -------------//
+
+
 
 export function setFavoris(value) {
     favoris = value;
   }
 
-
+export function setLocalState() {
+  return globalState
+}
 
 easyFetch('https://strapi-gogokodo.herokuapp.com/api/sources', display)
 const paginationBtn = document.querySelector('footer ul')
@@ -82,7 +93,7 @@ function displayDifficulty(difficulty) {
 }
 
 
-function display (data) {
+export function display (data) {
     dataAPI = data.data
     metaAPI = data.meta
     globalState = data
@@ -215,12 +226,12 @@ check.addEventListener('change', (e) => {
   }
 
   if (e.target.value == "cd index.html") {
-    document.location.href = "http://127.0.0.1:5500/FrontOffice/loginPage/index.html"
+    document.location.href = "../../loginPage/index.html"
     e.target.value = ""
   }
 
   if (e.target.value == "cd Hub.html") {
-    document.location.href = "http://127.0.0.1:5500/index.html#"
+    document.location.href = "index.html"
     e.target.value = ""
   }
 })
